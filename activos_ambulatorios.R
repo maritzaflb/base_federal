@@ -24,7 +24,7 @@ datos<-as.data.frame(read.csv('200916COVID19MEXICO.csv',header=T, sep=','))
 activos<-datos %>% dplyr::filter(RESULTADO=='1' & FECHA_DEF=='9999-99-99' & ENTIDAD_RES=='14' & TIPO_PACIENTE=='1')
 
 
-
+#automatizar esta parte
 
 	fechas_sin1<-activos %>% mutate(fecha=as.Date(FECHA_SINTOMAS)+1)
 	FECHA_SINTOMAS<-as.Date(as.character(fechas_sin1$FECHA_SINTOMAS))
@@ -112,8 +112,8 @@ fechas<-fechas[1:(dim(fechas)[1]-14),]
 win.graph()
 
 ggplot(data= fechas,aes(x =as.Date(FECHA_SINTOMAS) , y =(datos))) +
- geom_point(color = 'blue')+ xlab('Fecha de síntomas')+ geom_smooth(color = 'black',level = 0.95,span=0.4,method="loess",fill='#87CEEB')+xlab('Fecha de síntomas')+
-  ylab('Número de casos') +  labs(title = "Casos confirmados activos ambulatorios por covid-19 en el estado de Jalisco 02/09/2020")+scale_x_date(labels = date_format("%d/%m/%Y"))+
+ geom_point(color = 'blue')+ xlab('Fecha de sÃ­ntomas')+ geom_smooth(color = 'black',level = 0.95,span=0.4,method="loess",fill='#87CEEB')+xlab('Fecha de sÃ­ntomas')+
+  ylab('NÃºmero de casos') +  labs(title = "Casos confirmados activos ambulatorios por covid-19 en el estado de Jalisco 02/09/2020")+scale_x_date(labels = date_format("%d/%m/%Y"))+
 
 geom_vline(xintercept =as.Date("2020-07-13"),col='red')+
 geom_vline(xintercept =as.Date("2020-06-01"),col='red')+
